@@ -17,12 +17,14 @@ app.set('view engine', 'hbs');
 //   next();
 // });
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs', {
-    pageTitle: 'maintenace'
-  });
-  // no next(); cuz need to stop everything after from exectuing.
-});
+// maintenance
+
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs', {
+//     pageTitle: 'maintenace'
+//   });
+//   // no next(); cuz need to stop everything after from exectuing.
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -43,6 +45,12 @@ hbs.registerHelper('getCurrentYear', () => {
 
 hbs.registerHelper('screamIt', (text) => {
   return text.toUpperCase();
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects!'
+  })
 });
 
 app.get('/', (req, res) => {
