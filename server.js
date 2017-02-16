@@ -4,6 +4,9 @@ const fs = require('fs');
 
 var app = express();
 
+// heroku set port, als we dit lokaal doen, moet het 3000 kiezen
+const port = process.env.PORT || 3000;
+
 //middleware
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
@@ -69,6 +72,7 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("server is up on port 3000");
+// heroku env variable -> heroku set deze
+app.listen(port, () => {
+  console.log(`server is up on port ${port}`);
 });
